@@ -7,12 +7,12 @@ enum NavigationRouteStyle {
 }
 
 class Navigation {
-  static Future<T> navigateTo<T>({
-    @required BuildContext context,
-    @required Widget screen,
-    @required NavigationRouteStyle style,
+  static Future<T?> navigateTo<T>({
+    required BuildContext context,
+    required Widget screen,
+    required NavigationRouteStyle style,
   }) async {
-    Route route;
+    Route<T> route = CupertinoPageRoute<T>(builder: (_) => screen);
     if (style == NavigationRouteStyle.cupertino) {
       route = CupertinoPageRoute<T>(builder: (_) => screen);
     } else if (style == NavigationRouteStyle.material) {
